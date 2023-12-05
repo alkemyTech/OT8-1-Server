@@ -15,7 +15,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Long id; // Cambiado a Long para permitir la generación automática
+    private Long id;
     private String name;
     private String lastName;
     private String email;
