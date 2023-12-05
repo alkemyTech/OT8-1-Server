@@ -1,9 +1,4 @@
 package com.alkemy.wallet.controller;
-     /*En el contexto de la arquitectura de software Modelo-Vista-Controlador (MVC), el controlador
-     actúa como un intermediario entre el modelo (que representa los datos) y la vista (que es la
-     representación visual de los datos). . Los controladores toman las entradas del usuario,
-     llaman a los métodos apropiados en los servicios para procesar estas entradas, y luego devuelven
-     una respuesta al usuario.*/
 
 import com.alkemy.wallet.entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;

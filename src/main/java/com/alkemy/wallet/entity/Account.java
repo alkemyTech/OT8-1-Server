@@ -1,15 +1,9 @@
 package com.alkemy.wallet.entity;
 
 import lombok.Getter;
-import javax.persistence.Entity;
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Enumerated;
-import com.alkemy.wallet.entity.User;
-import javax.persistence.EnumType;
+
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Getter
 @Entity
@@ -30,16 +24,13 @@ import javax.persistence.EnumType;
         @Column(name = "balance", nullable = false)
         private Double balance;
 
-        @ManyToOne
-        @JoinColumn(name = "userId", nullable = false)
-        private User user;
 
         @Column(name = "creationDate")
-        private LocalDateTime creationDate;
+        private Timestamp creationDate;
 
-        @Getter
+
         @Column(name = "updateDate")
-        private LocalDateTime updateDate;
+        private Timestamp updateDate;
 
         @Column(name = "isDeleted")
         private Boolean isDeleted = false;
@@ -62,15 +53,11 @@ import javax.persistence.EnumType;
         this.balance = balance;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public void setCreationDate(LocalDateTime creationDate) {
+    public void setCreationDate(Timestamp creationDate) {
         this.creationDate = creationDate;
     }
 
-    public void setUpdateDate(LocalDateTime updateDate) {
+    public void setUpdateDate(Timestamp updateDate) {
         this.updateDate = updateDate;
     }
 
