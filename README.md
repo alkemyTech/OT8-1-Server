@@ -10,7 +10,7 @@
 - Code must be in English.
 - The controllers should finish with suffix "Controller". Example: UserController.
 - The services should finish with suffix "Service". Example: UserService.
-- The repositories should finish with suffix "Repository". Example: UserRepository.
+- The repositories should finish with suffix "repo". Example: UserRepository.
 - The interfaces should start with prefix "I". Example: IUserRepository.
 - The implementations should finish with suffix "Impl". Example: UserServiceImpl.
 - The DTOs should finish with suffix "Dto". Example: UserDto, UserRequestDto.
