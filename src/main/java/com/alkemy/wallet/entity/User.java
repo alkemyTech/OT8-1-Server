@@ -2,10 +2,17 @@ package com.alkemy.wallet.entity;
 
 
 import java.sql.Timestamp;
+
+
+import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import javax.persistence.PrePersist;
+
 import javax.persistence.Table;
 
 @Entity
@@ -16,14 +23,35 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
+
+    @Column (nullable = false)
     private String name;
+
+    @Column (nullable = false)
     private String lastName;
+
+    @Column (nullable = false)
     private String email;
+
+    @Column (nullable = false)
     private String password;
+
+    @Column 
     private Long roleId;
+    
+    @Column 
     private Timestamp creationDate;
+
+    @Column 
     private Timestamp updateDate;
+
+    @Column 
     private boolean softDelete;
+
+    @PrePersist
+    protected void onCreate() {
+    this.creationDate = new Timestamp(System.currentTimeMillis() );
+}
 
 
     public Long getId() {

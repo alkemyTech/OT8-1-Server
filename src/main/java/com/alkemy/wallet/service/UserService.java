@@ -4,6 +4,9 @@ import com.alkemy.wallet.entity.User;
 import com.alkemy.wallet.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+
+import java.sql.Timestamp;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -39,16 +42,28 @@ public class UserService {
             existingUser.setEmail(newUser.getEmail());
             existingUser.setPassword(newUser.getPassword());
             existingUser.setRoleId(newUser.getRoleId());
-            existingUser.setCreationDate(newUser.getCreationDate());
             existingUser.setUpdateDate(newUser.getUpdateDate());
             existingUser.setSoftDelete(newUser.getSoftDelete());
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            existingUser.setUpdateDate(timestamp); 
+            
             return userRepository.save(existingUser);
         } else {
             return null;
         }
     }
 
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+ public User softDeleteUser(Long id, User newUser) {
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isPresent()) {
+            User existingUser = optionalUser.get();
+            existingUser.setSoftDelete(newUser.getSoftDelete());
+
+            return userRepository.save(existingUser);
+        } else {
+            return null;
+        }
     }
+
+
 }

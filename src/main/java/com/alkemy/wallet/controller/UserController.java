@@ -43,9 +43,11 @@ public class UserController {
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+    @PutMapping("/sofDelete/{id}")
+    public ResponseEntity<User> User(@PathVariable Long id, @RequestBody User user) {
+        User softDeleteUser = userService.softDeleteUser(id, user);
+        return new ResponseEntity<>(softDeleteUser, HttpStatus.OK);
+
     }
 }
