@@ -3,7 +3,7 @@ package com.alkemy.wallet.service;
 de la base de datos*/
 
 import com.alkemy.wallet.entity.Account;
-import com.alkemy.wallet.repo.AccountRepository;
+import com.alkemy.wallet.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 
 @Service
