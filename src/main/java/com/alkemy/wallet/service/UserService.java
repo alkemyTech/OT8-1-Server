@@ -41,7 +41,6 @@ public class UserService {
             existingUser.setLastName(newUser.getLastName());
             existingUser.setEmail(newUser.getEmail());
             existingUser.setPassword(newUser.getPassword());
-            existingUser.setRoleId(newUser.getRoleId());
             existingUser.setUpdateDate(newUser.getUpdateDate());
             existingUser.setSoftDelete(newUser.getSoftDelete());
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
