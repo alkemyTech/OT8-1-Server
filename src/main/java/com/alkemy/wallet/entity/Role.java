@@ -2,13 +2,7 @@ package com.alkemy.wallet.entity;
 
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "roles")
@@ -18,7 +12,8 @@ public class Role {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id; // int cambiado a Long para permitir la generacion automatica del id
 
-  @Column(nullable = false) 
+  @Column(name = "NAME", nullable = false)
+  @Enumerated(EnumType.STRING)
   private ERole name;
 
   @Column(nullable = true) 

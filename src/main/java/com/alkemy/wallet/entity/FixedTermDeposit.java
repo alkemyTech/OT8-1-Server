@@ -1,12 +1,6 @@
 package com.alkemy.wallet.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
@@ -21,9 +15,6 @@ public class FixedTermDeposit {
   private Double amount;
 
   @Column(nullable = false)
-  private int accountId;
-
-  @Column(nullable = false)
   private Double interest;
 
   @Column
@@ -32,6 +23,10 @@ public class FixedTermDeposit {
   @Column
   private Timestamp closingDate;
 
+  @ManyToOne
+  @JoinColumn(name="accountId", referencedColumnName = "id")
+  private Account account;
+    
   @PrePersist
   protected void onCreate() {
     this.creationDate = new Timestamp(System.currentTimeMillis());
@@ -53,14 +48,6 @@ public class FixedTermDeposit {
 
   public void setAmount(Double amount) {
     this.amount = amount;
-  }
-
-  public int getAccountId() {
-    return accountId;
-  }
-
-  public void setAccountId(int accountId) {
-    this.accountId = accountId;
   }
 
   public Double getInterest() {

@@ -1,19 +1,9 @@
 package com.alkemy.wallet.entity;
 
-
 import java.sql.Timestamp;
+import java.util.List;
 
-
-import javax.persistence.Column;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import javax.persistence.PrePersist;
-
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
@@ -35,9 +25,6 @@ public class User {
 
     @Column (nullable = false)
     private String password;
-
-    @Column 
-    private Long roleId;
     
     @Column 
     private Timestamp creationDate;
@@ -47,6 +34,13 @@ public class User {
 
     @Column 
     private boolean softDelete;
+
+    @ManyToOne
+    @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID")
+    private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Account> accounts;
 
     @PrePersist
     protected void onCreate() {
@@ -92,14 +86,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Long getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
     }
 
     public Timestamp getCreationDate() {
