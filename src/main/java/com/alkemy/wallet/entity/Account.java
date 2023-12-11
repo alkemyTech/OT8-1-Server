@@ -2,7 +2,7 @@ package com.alkemy.wallet.entity;
 
 import lombok.Getter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.sql.Timestamp;
 
 @Getter
