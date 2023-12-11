@@ -1,14 +1,17 @@
 package com.alkemy.wallet.entity;
 
 import java.sql.Timestamp;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
+import java.util.List;
+
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 
@@ -36,7 +39,6 @@ public class User {
     @Column
     private Long roleId;
 
-    @Column
     private Timestamp creationDate;
 
     @Column
@@ -45,9 +47,17 @@ public class User {
     @Column
     private boolean softDelete;
 
+    @ManyToOne
+    @JoinColumn(name = "ROLE_ID", referencedColumnName = "ID")
+    private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Account> accounts;
+
     @PrePersist
     protected void onCreate() {
         this.creationDate = new Timestamp(System.currentTimeMillis());
     }
 
 }
+

@@ -42,10 +42,4 @@ public class RoleController {
     Role updatedRole = roleService.updateRole(id, role);
     return new ResponseEntity<>(updatedRole, HttpStatus.OK);
   }
-
-  @DeleteMapping("/{id}")
-  public ResponseEntity<Void> deleteRole(@PathVariable Long id) {
-    roleService.deleteRole(id);
-    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-  }
 }

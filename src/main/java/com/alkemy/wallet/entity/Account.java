@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import jakarta.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Getter
 @Entity
@@ -34,6 +35,13 @@ import java.sql.Timestamp;
 
         @Column(name = "isDeleted")
         private Boolean isDeleted = false;
+
+        @ManyToOne
+        @JoinColumn(name="USER_ID", referencedColumnName = "ID")
+        private User user;
+    
+        @OneToMany(mappedBy = "account")
+        private List<FixedTermDeposit> fixedTermDeposits;
 
         // Acá los getters y setters para cada atributo
 
