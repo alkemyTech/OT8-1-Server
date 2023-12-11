@@ -58,6 +58,5 @@ public class User {
     protected void onCreate() {
         this.creationDate = new Timestamp(System.currentTimeMillis());
     }
-
 }
 

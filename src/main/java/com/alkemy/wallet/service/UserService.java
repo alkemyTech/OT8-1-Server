@@ -37,12 +37,11 @@ public class UserService {
         Optional<User> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()) {
             User existingUser = optionalUser.get();
-            existingUser.setName(newUser.getName());
+            existingUser.setFirstName(newUser.getFirstName());
             existingUser.setLastName(newUser.getLastName());
             existingUser.setEmail(newUser.getEmail());
             existingUser.setPassword(newUser.getPassword());
             existingUser.setUpdateDate(newUser.getUpdateDate());
-            existingUser.setSoftDelete(newUser.getSoftDelete());
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
             existingUser.setUpdateDate(timestamp); 
             
@@ -51,18 +50,4 @@ public class UserService {
             return null;
         }
     }
-
- public User softDeleteUser(Long id, User newUser) {
-        Optional<User> optionalUser = userRepository.findById(id);
-        if (optionalUser.isPresent()) {
-            User existingUser = optionalUser.get();
-            existingUser.setSoftDelete(newUser.getSoftDelete());
-
-            return userRepository.save(existingUser);
-        } else {
-            return null;
-        }
-    }
-
-
 }
