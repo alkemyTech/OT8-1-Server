@@ -1,5 +1,6 @@
 package com.alkemy.wallet.controller;
 
+import com.alkemy.wallet.dto.TransactionsDto;
 import com.alkemy.wallet.entity.Account;
 import com.alkemy.wallet.entity.FixedTermDeposit;
 import com.alkemy.wallet.entity.Transaction;
@@ -29,7 +30,7 @@ public class TransactionController {
         return transactionService.getAllTransaction();
     }
     @PostMapping("/")
-    public Transaction createTransaction(@RequestBody Transaction transaction) {
-        return transactionService.createTransaction(transaction);
+    public TransactionsDto createTransaction(@RequestBody TransactionsDto transactionsDto) {
+        return transactionService.createTransaction(transactionsDto);
     }
 }
